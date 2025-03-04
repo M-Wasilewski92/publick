@@ -1,27 +1,27 @@
 import unittest
 
-from htmlnode import HtmlNode, LeafNode, ParentNode
-from src.textnode import TextNode, TextType
+from htmlnode import HTMLNode, LeafNode, ParentNode
+
 
 
 class TestHtmlNode(unittest.TestCase):
     def test_to_html(self):
-        self.assertRaises(NotImplementedError, HtmlNode().to_html)
+        self.assertRaises(NotImplementedError, HTMLNode().to_html)
 
     def test_props_to_html(self):
-        node = HtmlNode(props={
+        node = HTMLNode(props={
             "href": "https://www.google.com",
             "target": "_blank",
         })
         self.assertEqual(' href="https://www.google.com" target="_blank"', node.props_to_html())
 
     def test_empty_node_repr(self):
-        node = HtmlNode()
-        self.assertEqual("""HtmlNode(None, "None", None, None)""", repr(node))
+        node = HTMLNode()
+        self.assertEqual("""HTMLNode(None, None, children: None, None)""", repr(node))
 
     def test_node_repr(self):
-        node = HtmlNode("p", "This is a text node", )
-        self.assertEqual('HtmlNode(p, "This is a text node", None, None)', repr(node))
+        node = HTMLNode("p", "This is a text node", )
+        self.assertEqual('HTMLNode(p, This is a text node, children: None, None)', repr(node))
 
 
 class TestLeafNode(unittest.TestCase):

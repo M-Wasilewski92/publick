@@ -54,12 +54,12 @@ class Testblock_to_block_type(unittest.TestCase):
         self.assertEqual(BlockType.PARAGRAPH, block_to_block_type(text))
 
     def test_block_to_block_type_unordered_list(self):
-        text = "* This is a list\n- with items"
-        self.assertEqual(BlockType.UNORDERED_LIST, block_to_block_type(text))
+        text = "- list\n- items"
+        self.assertEqual(BlockType.ULIST, block_to_block_type(text))
 
     def test_block_to_block_type_ordered_list(self):
         text = "1. This is a list\n2. with items"
-        self.assertEqual(BlockType.ORDERED_LIST, block_to_block_type(text))
+        self.assertEqual(BlockType.OLIST, block_to_block_type(text))
 
     def test_block_to_block_type_code(self):
         text = "```\nThis is a code block\n```"
